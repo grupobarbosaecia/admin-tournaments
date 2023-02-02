@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!-- bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+    <!-- phosphor icons -->
+    <script src="https://unpkg.com/phosphor-icons"></script>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/index.css">
+
+    <script src="scripts/indexSpark.js" type="module" defer></script>
+</head>
+
+<body>
+    <div class="loginForm"></div>
+    <div class="container">
+        <div class="d-flex flex-column flex-lg-row align-items-center justify-content-lg-between mt-5 header">
+
+            <div class="title mt-5 mt-lg-0 pt-lg-0 pt-4 d-flex align-items-center justify-content-center">
+                <div class="separator bgMain me-4"></div>
+                <span class="torneio fontMain montserrat">TORNEIOS</span>
+            </div>
+
+            <button class="logoutBtn bgDanger fontBg">Sair</button>
+        </div>
+
+        <div class="w-100 d-flex justify-content-center justify-content-lg-start align-items-center mt-5 montserrat">
+            <div class="createTournament d-flex flex-column flex-lg-row align-items-center pt-3 pt-lg-5">
+                <span class="order-lg-1 ms-lg-3">Criar torneio</span>
+                <div class="createBtn bgMain d-flex justify-content-center align-items-center" data-bs-toggle="modal"
+                    data-bs-target="#create">
+                    <i class="ph-plus-circle-fill"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="tournamentManager mt-5 montserrat">
+            <p class="fontMain pt-lg-5">TORNEIOS</p>
+            <div class="tournaments d-flex flex-column flex-lg-row justify-content-lg-between flex-lg-wrap">
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- modals -->
+
+    <!-- ranking -->
+    <div class="modal fade" id="ranking" tabindex="-1">
+
+        <div class="modal-dialog modal-fullscreen-md-down montserrat">
+
+            <div class="modal-content bgMain p-2">
+
+                <div class="modal-header border-bottom-0 mt-2">
+
+                    <i class="ph-x-fill" data-bs-dismiss="modal"></i>
+
+                </div>
+
+                <div class="modal-body mt-3">
+
+                    <div class="table-responsive mb-3">
+                        <table class="table table-borderless align-middle fontBg table-group-divider">
+                            <thead>
+
+                                <tr>
+                                    <th scope="col">Posição</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Pontos</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody class="me-4 table-ranking table-group-divider">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- informações -->
+    <div class="modal fade" id="information" tabindex="-1">
+
+        <div class="modal-dialog modal-fullscreen-md-down montserrat">
+
+            <div class="modal-content bgMain p-2">
+
+                <div class="modal-header border-bottom-0 mt-2">
+                    <i class="ph-x-fill" data-bs-dismiss="modal"></i>
+                </div>
+
+                <div class="information-body modal-body mt-1">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- criar -->
+    <div class="modal fade" id="create" tabindex="-1">
+
+        <div class="modal-dialog modal-fullscreen-md-down montserrat">
+
+            <div class="modal-content bgMain p-2">
+
+                <div class="modal-header border-bottom-0 mt-4">
+                    <i class="ph-x-fill" data-bs-dismiss="modal"></i>
+                </div>
+
+                <div class="modal-body mt-3 montserrat">
+                    <h3 class="text-center fontBg mb-3">Criar torneio</h3>
+
+                    <form class="form-createTournament">
+
+                        <div class="mb-4">
+                            <label for="Nome" class="form-label fontBg p-0 m-1">Nome</label>
+                            <input type="text" class="form-control" id="nome" autocomplete="off">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="taxa" class="form-label fontBg p-0 m-1">Taxa</label>
+                            <input type="number" class="form-control" id="taxa" autocomplete="off">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="premio" class="form-label fontBg p-0 m-1">Prêmio</label>
+                            <input type="number" class="form-control" id="premio" autocomplete="off">
+                        </div>
+
+                        <div class="times mb-5 d-flex justify-content-between flex-column flex-sm-row">
+                            <div>
+                                <label for="inicio" class="form-label fontBg p-0 m-1">Início</label>
+                                <input type="datetime-local" class="form-control" id="inicio" autocomplete="off">
+                            </div>
+
+                            <div
+                                class="text-sm-end d-flex justify-content-sm-end align-items-sm-end flex-column mt-4 mt-sm-0">
+                                <label for="encerramento" class="form-label fontBg p-0 m-1">Encerramento</label>
+                                <input type="datetime-local" class="form-control" id="encerramento" autocomplete="off">
+                            </div>
+
+                        </div>
+
+                        <div class="mb-5">
+
+                            <select class="form-select montserrat" aria-label="Default select example">
+                                <option selected>Ativos</option>
+                                <option value="BTCUSD">BTC/USD</option>
+                                <option value="EURUSD">EUR/USD</option>
+                                <option value="BNBUSD">BNB/USD</option>
+                                <option value="ETHUSD">ETH/USD</option>
+                                <option value="EURJPY">EUR/JPY</option>
+                                <option value="AUDUSD">AUD/USD</option>
+                                <option value="EURBGP">EUR/BGP</option>
+                                <option value="GBPUSD">GBP/USD</option>
+                                <option value="USDJPY">USD/JPY</option>
+                                <option value="AUDJPY">AUD/JPY</option>
+                                <option value="GBPJPY">GBP/JPY</option>
+                                <option value="AUDCAD">AUD/CAD</option>
+                            </select>
+
+                        </div>
+
+                        <div class="w-100 text-center mb-3">
+                            <button type="submit">Cadastrar</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- editar -->
+    <div class="modal fade" id="edit" tabindex="-1">
+
+        <div class="modal-dialog modal-fullscreen-md-down montserrat">
+
+            <div class="modal-content bgMain p-2">
+
+                <div class="modal-header border-bottom-0 mt-4">
+                    <i class="ph-x-fill" data-bs-dismiss="modal"></i>
+                </div>
+
+                <div class="modal-body mt-3 montserrat">
+                    <h3 class="text-center fontBg mb-3">Editar Torneio</h3>
+
+                    <form class="form-editTournament">
+
+                        <div class="mb-4">
+                            <label for="Nome" class="form-label fontBg p-0 m-1">Nome</label>
+                            <input type="text" class="form-control" id="nome" autocomplete="off">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="taxa" class="form-label fontBg p-0 m-1">Taxa</label>
+                            <input type="number" class="form-control" id="taxa" autocomplete="off">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="premio" class="form-label fontBg p-0 m-1">Prêmio</label>
+                            <input type="number" class="form-control" id="premio" autocomplete="off">
+                        </div>
+
+                        <div class="times mb-5 d-flex justify-content-between flex-column flex-sm-row">
+                            <div>
+                                <label for="inicio" class="form-label fontBg p-0 m-1">Início</label>
+                                <input type="datetime-local" class="form-control" id="inicio" autocomplete="off">
+                            </div>
+
+                            <div
+                                class="text-sm-end d-flex justify-content-sm-end align-items-sm-end flex-column mt-4 mt-sm-0">
+                                <label for="encerramento" class="form-label fontBg p-0 m-1">Encerramento</label>
+                                <input type="datetime-local" class="form-controls" id="encerramento" autocomplete="off">
+                            </div>
+
+                        </div>
+
+                        <div class="mb-5">
+
+                            <select class="form-select montserrat" aria-label="Default select example">
+                                <option selected>Ativos</option>
+                                <option value="BTCUSD">BTC/USD</option>
+                                <option value="EURUSD">EUR/USD</option>
+                                <option value="BNBUSD">BNB/USD</option>
+                                <option value="ETHUSD">ETH/USD</option>
+                                <option value="EURJPY">EUR/JPY</option>
+                                <option value="AUDUSD">AUD/USD</option>
+                                <option value="EURBGP">EUR/BGP</option>
+                                <option value="GBPUSD">GBP/USD</option>
+                                <option value="USDJPY">USD/JPY</option>
+                                <option value="AUDJPY">AUD/JPY</option>
+                                <option value="GBPJPY">GBP/JPY</option>
+                                <option value="AUDCAD">AUD/CAD</option>
+                            </select>
+
+                        </div>
+
+                        <div class="w-100 text-center mb-3">
+                            <button type="submit">Cadastrar</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Excluir -->
+    <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content shadow bgMain fontBg montserrat">
+                <div
+                    class="modal-header border-bottom-0 d-flex flex-column justify-content-center align-items-center mt-2">
+
+                    <p class="text-center fw-bold">
+                        Você tem certeza que deseja excluir deste torneio?
+                    </p>
+                </div>
+
+                <div class="modal-body delete d-flex justify-content-evenly px-4 pt-0 mb-2">
+
+                    <button class="no p-2 px-4" data-bs-dismiss="modal">
+                        Não
+                    </button>
+
+                    <button class="yes p-2 px-4">
+                        Sim
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
