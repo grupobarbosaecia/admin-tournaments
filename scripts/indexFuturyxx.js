@@ -82,10 +82,9 @@ async function showTournaments() {
 //create tournaments
 
 const formCreateTournament = document.querySelector(".form-createTournament")
+const sendBtn = document.querySelector(".sendTournament")
 
-formCreateTournament.addEventListener("submit", async (e) => {
-
-    e.preventDefault();
+sendBtn.addEventListener("click", async () => {
 
     let inputNome = formCreateTournament.querySelector("#nome")
     let inputTaxa = formCreateTournament.querySelector("#taxa")
@@ -113,7 +112,9 @@ formCreateTournament.addEventListener("submit", async (e) => {
     }
 
     let req = await fetch(`${api}/admin/criar_torneio`, options)
+    sendBtn.setAttribute("disabled", true)
     let res = await req.json()
+
 
     if (res.status === "ok") {
         alert("Torneio Cadastrado")
@@ -221,14 +222,16 @@ async function getRanking(e) {
 // delete tournament
 
 const yesBtn = document.querySelector(".yes")
+const noBtn = document.querySelector(".no")
 
 function deleteTournament(e) {
-    let tournamentId = e.target.parentElement.dataset.id
+
+    let tournamentID = e.target.parentElement.dataset.id
 
     yesBtn.addEventListener("click", async () => {
 
         let dados = {
-            id: tournamentId
+            id: tournamentID
         }
 
         let options = {
@@ -249,6 +252,11 @@ function deleteTournament(e) {
         }
 
     })
+
+    noBtn.addEventListener("click", () => {
+        tournamentID = null;
+    })
+
 }
 
 

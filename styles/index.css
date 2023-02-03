@@ -179,6 +179,10 @@ input::-webkit-inner-spin-button {
     width: 90%;
 }
 
+.sendTournament:disabled {
+    opacity: .6;
+}
+
 /* delete modal */
 .modal-body.delete button {
     border: none;
